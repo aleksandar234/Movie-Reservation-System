@@ -1,0 +1,30 @@
+const mongoose = require('mongoose')
+
+const today = new Date()
+
+const ReserveModel = new mongoose.Schema({
+    user_email: {
+        type: String,
+        required: true
+    },
+    movieTitle: {
+        type: String,
+        required : true,
+    },
+    projectionDate: {
+        type: String,
+        required : false,
+        default: today.getFullYear() + '-' + (today.getMonth()+1) + '-' + today.getDate()
+    }, 
+    projectionTime: {
+        type: String,
+        require: true
+    },
+    numberOfPpl: {
+        type: Number,
+        require: true
+    }
+})
+
+
+module.exports = mongoose.model('Reservation',ReserveModel)
